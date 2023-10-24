@@ -156,7 +156,7 @@
                                                     <div class="form-row">
                                                         <div class="form-group col-md-3">
                                                             <label for="inputEmail4">Search</label>
-                                                            <input type="email" class="form-control" name="search" id="inputEmail4" value="${requestScope.search}" placeholder="Search By Title/Type/Name ....">
+                                                            <input type="text" class="form-control" name="search" id="inputEmail4" value="${requestScope.search}" placeholder="Search By Title/Type/Name ....">
                                                         </div>
                                                         <div class="form-check form-check-inline col-md-2">
                                                             <label class="form-check-label" for="statusActive">Active</label>
