@@ -37,7 +37,7 @@ public class SubjectSetting extends HttpServlet {
         request.setAttribute("subID", subjectID);
         SubjectSettingDAO subjectSettingDAO = new SubjectSettingDAO();
         if (action == null || action.trim().isEmpty()) {
-            int pagenum = request.getParameter("pagenum") != null ? Integer.parseInt(request.getParameter("pagenum")) : 1;
+            int pagenum = request.getParameter("pageNum") != null ? Integer.parseInt(request.getParameter("pageNum")) : 1;
             String searchValue = request.getParameter("search");
             request.setAttribute("search", searchValue);
             String status = request.getParameter("status");

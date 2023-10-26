@@ -158,7 +158,7 @@
                                                         <input type="hidden" name="classID" value="${requestScope.classID}">
                                                         <div class="form-group col-md-3">
                                                             <label for="inputEmail4">Search </label>
-                                                            <input type="email" class="form-control" name="searchAss" id="inputEmail4" value="${requestScope.search}" placeholder="Search By Type ....">
+                                                            <input type="text" class="form-control" name="searchAss" id="inputEmail4" value="${requestScope.search}" placeholder="Search By Type ....">
                                                         </div>
                                                         <div class="form-check form-check-inline col-md-2">
                                                             <label class="form-check-label" for="statusActive">Active</label>
@@ -271,7 +271,7 @@
                                             <div class="box-footer clearfix" style="margin-left: 44%">
                                                 <ul class="pagination pagination-sm no-margin pull-left text-center">
                                                     <c:if test="${requestScope.pageNum > 1}">
-                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/classIssuseSetting?pageNum=${requestScope.page - 1}&classID=${requestScope.classID}">Previous</a></li>
+                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/classIssuseSetting?pageNum=${requestScope.pageNum - 1}&classID=${requestScope.classID}">Previous</a></li>
                                                         </c:if>
                                                         <c:forEach begin="${requestScope.pageNum}" end="${requestScope.totalPageAss > requestScope.pageNum + 2 ? (requestScope.pageNum + 2) : requestScope.totalPage}" var="i">
                                                         <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/classIssuseSetting?pageNum=${i}&classID=${requestScope.classID}">${i}</a></li>

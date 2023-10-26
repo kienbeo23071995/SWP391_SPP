@@ -279,13 +279,13 @@
                                             <div class="box-footer clearfix" style="margin-left: 44%">
                                                 <ul class="pagination pagination-sm no-margin pull-left text-center">
                                                     <c:if test="${requestScope.pageNum > 1}">
-                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/SubjectAssignment?pageNum=${requestScope.pageNum - 1}&subID=${requestScope.subID}">Previous</a></li>
+                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/SubjectSetting?pageNum=${requestScope.pageNum - 1}&subID=${requestScope.subID}">Previous</a></li>
                                                         </c:if>
                                                         <c:forEach begin="${requestScope.pageNum}" end="${requestScope.totalPage > requestScope.pageNum + 2 ? (requestScope.pageNum + 2) : requestScope.totalPage}" var="i">
-                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/SubjectAssignment?pageNum=${i}&subID=${requestScope.subID}">${i}</a></li>
+                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/SubjectSetting?pageNum=${i}&subID=${requestScope.subID}">${i}</a></li>
                                                         </c:forEach>
                                                         <c:if test="${requestScope.pageNum < requestScope.totalPage}">
-                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/SubjectAssignment?pageNum=${requestScope.pageNum + 1}&subID=${requestScope.subID}">Next</a></li>
+                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/SubjectSetting?pageNum=${requestScope.pageNum + 1}&subID=${requestScope.subID}">Next</a></li>
                                                         </c:if>
                                                 </ul>
                                             </div>

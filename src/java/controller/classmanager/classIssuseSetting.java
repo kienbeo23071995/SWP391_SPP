@@ -40,8 +40,8 @@ public class classIssuseSetting extends HttpServlet {
             ClassSettingDAO classSettingDAO = new ClassSettingDAO();
             request.setAttribute("classID", classID);
             if (action == null || action.trim().isEmpty()) {
-                int pagenum = request.getParameter("pageNum") != null ? Integer.parseInt(request.getParameter("pageNumAssignment")) : 1;
-                String searchValue = request.getParameter("search");
+                int pagenum = request.getParameter("pageNum") != null ? Integer.parseInt(request.getParameter("pageNum")) : 1;
+                String searchValue = request.getParameter("searchAss");
                 request.setAttribute("search", searchValue);
                 String status = request.getParameter("status");
                 request.setAttribute("status", status);         
