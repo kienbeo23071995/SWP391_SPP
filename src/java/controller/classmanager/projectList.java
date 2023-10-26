@@ -4,8 +4,8 @@
  */
 package controller.classmanager;
 
-import dal.AssignmentDAO;
-import dal.ClassDAO;
+import dal.GroupDAO;
+import dal.ProjectDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,14 +13,15 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
-import model.Assignment;
+import model.Group;
+import model.Project;
 import ulti.Helper;
 
 /**
  *
- * @
+ * @author kienb
  */
-public class ClassAssignment extends HttpServlet {
+public class projectList extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,37 +36,48 @@ public class ClassAssignment extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            String id = request.getParameter("id");
-            String classID = request.getParameter("classID");
-            request.setAttribute("classID", classID);
-            AssignmentDAO assignmentDAO = new AssignmentDAO();
-            String action = request.getParameter("action");
-            ClassDAO classDAO = new ClassDAO();
+            String action = request.getParameter("action");           
             if (action == null || action.trim().isEmpty()) {
-                int pagenum = request.getParameter("pageNum") != null ? Integer.parseInt(request.getParameter("pageNum")) : 1;
-                String searchValue = request.getParameter("search");
-                request.setAttribute("search", searchValue);
-                String startDate = request.getParameter("startDate");
-                request.setAttribute("startDate", startDate);
-                String endDate = request.getParameter("endDate");
-                request.setAttribute("endDate", endDate);
-                List<Assignment> list = assignmentDAO.getAssignmentByClass(searchValue, startDate, endDate, Integer.parseInt(classID));
-                List<Assignment> pagination = Helper.pagination(list, pagenum, 5);
+                int pagenum = request.getParameter("pagenum") != null ? Integer.parseInt(request.getParameter("pagenum")) : 1;
+                String search = request.getParameter("search");
+                request.setAttribute("search", search);
+                String status = request.getParameter("status");
+                request.setAttribute("status", status);
+                String groupID = request.getParameter("groupID");
+                request.setAttribute("groupID", groupID);
+                GroupDAO groupDAO = new GroupDAO();
+                List<Group> groups = groupDAO.getAll(null);
+                ProjectDAO pdao = new ProjectDAO();
+                List<Project> list = pdao.getAll(search, status, groupID);
+                List<Project> pagination = Helper.pagination(list, pagenum, 5);
                 int totalPage = list.size() % 5 == 0 ? (list.size() / 5) : (list.size() / 5 + 1);
-                request.setAttribute("pageNum", pagenum);
+                request.setAttribute("groups", groups);
+                request.setAttribute("pagenum", pagenum);
                 request.setAttribute("totalPage", totalPage);
-                request.setAttribute("assignmentList", pagination);
-                request.setAttribute("active", 2);
-                request.getRequestDispatcher("ClassAssignment.jsp").forward(request, response);
+                request.setAttribute("projects", pagination);
+                
+                request.getRequestDispatcher("ListProject.jsp").forward(request, response);
                 return;
-            } else if (action.equals("update")) {
-                String title = request.getParameter("title");
-                String startDate = request.getParameter("startDate");
-                String endDate = request.getParameter("endDate");
-                String description = request.getParameter("description");
-                classDAO.updateAssignment(Integer.parseInt(id), startDate, endDate, title, description);
             }
-            response.sendRedirect("ClassAssignment?classID=" + classID);
+            else if(action.equals("update")){
+                String id = request.getParameter("id");
+                String engname = request.getParameter("englishname");
+                String viname = request.getParameter("viname");
+                String groupID = request.getParameter("groupID");
+                String description = request.getParameter("description");
+                ProjectDAO projectDAO = new ProjectDAO();
+                projectDAO.updateProject(id, engname, viname, description, Integer.parseInt(groupID));
+            }
+            else if(action.equals("add")){
+                String code = request.getParameter("code");
+                String engname = request.getParameter("englishname");
+                String viname = request.getParameter("viname");
+                String groupID = request.getParameter("groupID");
+                String description = request.getParameter("description");
+                ProjectDAO projectDAO = new ProjectDAO();
+                projectDAO.insertProject(code, engname, viname, description, Integer.parseInt(groupID));
+            }
+            response.sendRedirect("projectList");
         }
     }
 

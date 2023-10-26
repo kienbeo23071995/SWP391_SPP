@@ -213,9 +213,9 @@
                                             <div class="box-footer clearfix" style="margin-left: 44%">
                                                 <ul class="pagination pagination-sm no-margin pull-left text-center">
                                                     <c:if test="${requestScope.pageNum > 1}">
-                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/classStudent?pageNum=${requestScope.page - 1}&classID=${requestScope.classID}">Previous</a></li>
+                                                        <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/classStudent?pageNum=${requestScope.pageNum - 1}&classID=${requestScope.classID}">Previous</a></li>
                                                         </c:if>
-                                                        <c:forEach begin="${requestScope.pageNum}" end="${requestScope.totalPageAss > requestScope.pageNum + 2 ? (requestScope.pageNum + 2) : requestScope.totalPage}" var="i">
+                                                        <c:forEach begin="${requestScope.pageNum}" end="${requestScope.totalPage > requestScope.pageNum + 2 ? (requestScope.pageNum + 2) : requestScope.totalPage}" var="i">
                                                         <li class="page-item"><a style="font-size: larger;" class="page-link" href="${pageContext.request.contextPath}/classStudent?pageNum=${i}&classID=${requestScope.classID}">${i}</a></li>
                                                         </c:forEach>
                                                         <c:if test="${requestScope.pageNum < requestScope.totalPage}">

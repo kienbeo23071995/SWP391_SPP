@@ -4,45 +4,80 @@
  */
 package model;
 
-import java.time.LocalDateTime;
-
 /**
  *
  * @author asus
  */
 public class Project {
-    private int projectId; 
-    private String projectName; 
-    private String description; 
-    private LocalDateTime startDate; 
-    private LocalDateTime endDate;  
-    private Subject subject;
+    private int id;
+    private String code;
+    private String engname;
+    private String viname;
+    private Boolean status;
+    private Group group;
+    private String description;
+    private User mentor;
+
     public Project() {
     }
 
-    public Project(int projectId, String projectName, String description, LocalDateTime startDate, LocalDateTime endDate, Subject subject) {
-        this.projectId = projectId;
-        this.projectName = projectName;
+    public Project(int id, String code, String engname, String viname, Boolean status, Group group, String description, User mentor) {
+        this.id = id;
+        this.code = code;
+        this.engname = engname;
+        this.viname = viname;
+        this.status = status;
+        this.group = group;
         this.description = description;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.subject = subject;
+        this.mentor = mentor;
     }
 
-    public int getProjectId() {
-        return projectId;
+    public int getId() {
+        return id;
     }
 
-    public void setProjectId(int projectId) {
-        this.projectId = projectId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getProjectName() {
-        return projectName;
+    public String getCode() {
+        return code;
     }
 
-    public void setProjectName(String projectName) {
-        this.projectName = projectName;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getEngname() {
+        return engname;
+    }
+
+    public void setEngname(String engname) {
+        this.engname = engname;
+    }
+
+    public String getViname() {
+        return viname;
+    }
+
+    public void setViname(String viname) {
+        this.viname = viname;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     public String getDescription() {
@@ -53,30 +88,14 @@ public class Project {
         this.description = description;
     }
 
-    public LocalDateTime getStartDate() {
-        return startDate;
+    public User getMentor() {
+        return mentor;
     }
 
-    public void setStartDate(LocalDateTime startDate) {
-        this.startDate = startDate;
+    public void setMentor(User mentor) {
+        this.mentor = mentor;
     }
-
-    public LocalDateTime getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDateTime endDate) {
-        this.endDate = endDate;
-    }
-
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
-
+    
     
              
 }

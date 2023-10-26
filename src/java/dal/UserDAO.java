@@ -724,13 +724,15 @@ public class UserDAO extends BaseDAO {
         }
     }
 
-    public List<User> getStudentByConditions(String classID) {
+    public List<User> getStudentByConditions(String classID,int subjectID) {
         List<User> list = new ArrayList<>();
-        String sql = "select * from user where user_id not in (select user_id from class_user where class_id = ?)";
+        String sql = "select * from user where user_id not in (select user_id from class_user where class_id = ? union\n"
+                + "select user_id from class_user where class_id not in (select class_id from class where subjectID = ?))   ";
         try {
             Connection connection = getJDBCConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, Integer.parseInt(classID));
+            ps.setInt(2, subjectID);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 User user = new User();

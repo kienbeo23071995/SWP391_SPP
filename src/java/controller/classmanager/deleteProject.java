@@ -15,9 +15,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 /**
  *
- * @
+ * @author kienb
  */
-public class AddProject extends HttpServlet {
+public class deleteProject extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -30,14 +30,10 @@ public class AddProject extends HttpServlet {
     throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String name = request.getParameter("name");
-            String startDate = request.getParameter("startDate");
-            String endDate = request.getParameter("endDate");
-            String subjectID = request.getParameter("subjectID");
-            String description = request.getParameter("description");
+            String id = request.getParameter("id");
             ProjectDAO projectDAO = new ProjectDAO();
-            projectDAO.insertProject(name,subjectID,description,startDate,endDate);
-            response.sendRedirect("ClassManager");
+            projectDAO.deleteByID(Integer.parseInt(id));
+            response.sendRedirect("projectList");
         }
     } 
 

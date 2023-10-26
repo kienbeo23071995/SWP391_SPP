@@ -5,6 +5,7 @@
 
 package controller.classmanager;
 
+import dal.ClassDAO;
 import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,7 +39,8 @@ public class classStudent extends HttpServlet {
             request.setAttribute("classID", classID);
             String id = request.getParameter("id");
             UserDAO udo = new UserDAO();
-            List<User> users = udo.getStudentByConditions(classID);
+            ClassDAO classDAO = new ClassDAO();
+            List<User> users = udo.getStudentByConditions(classID,classDAO.getClassByID(Integer.parseInt(classID)).getSubject().getId());
             request.setAttribute("users", users);
             if(action == null || action.trim().isEmpty()){
                 int pagenum = request.getParameter("pageNum") != null ? Integer.parseInt(request.getParameter("pageNum")) : 1;

@@ -53,6 +53,9 @@
                         <ul class="treeview-menu">
                             <li><a href="${pageContext.request.contextPath}/classList"><i class="fa fa-circle-o"></i> Class List</a></li>
                         </ul>
+                        <ul class="treeview-menu">
+                            <li><a href="${pageContext.request.contextPath}/projectList"><i class="fa fa-circle-o"></i> Project List</a></li>
+                        </ul>
                     </li>
                 </ul>
             </section>

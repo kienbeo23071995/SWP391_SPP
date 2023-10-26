@@ -103,6 +103,14 @@
         <servlet-name>classStudent</servlet-name>
         <servlet-class>controller.classmanager.classStudent</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>projectList</servlet-name>
+        <servlet-class>controller.classmanager.projectList</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>deleteProject</servlet-name>
+        <servlet-class>controller.classmanager.deleteProject</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserVerify</servlet-name>
         <url-pattern>/UserVerify</url-pattern>
@@ -210,6 +218,14 @@
     <servlet-mapping>
         <servlet-name>classStudent</servlet-name>
         <url-pattern>/classStudent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>projectList</servlet-name>
+        <url-pattern>/projectList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>deleteProject</servlet-name>
+        <url-pattern>/deleteProject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

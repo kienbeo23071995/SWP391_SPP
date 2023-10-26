@@ -37,7 +37,6 @@ public class classList extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         int pagenum = request.getParameter("pagenum") != null ? Integer.parseInt(request.getParameter("pagenum")) : 1;
         String search = request.getParameter("search");
         request.setAttribute("search", search);

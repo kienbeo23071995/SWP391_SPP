@@ -69,43 +69,6 @@ CREATE TABLE IF NOT EXISTS `spp_database`.`assignment` (
     FOREIGN KEY (`classID`)
     REFERENCES `spp_database`.`class` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `spp_database`.`assignment_grade`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spp_database`.`assignment_grade` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `assignment_id` INT NULL DEFAULT NULL,
-  `grade` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `assignment_grade_assignment_id_fk` (`assignment_id` ASC) VISIBLE,
-  CONSTRAINT `assignment_grade_assignment_id_fk`
-    FOREIGN KEY (`assignment_id`)
-    REFERENCES `spp_database`.`assignment` (`id`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `spp_database`.`class_issue_setting`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spp_database`.`class_issue_setting` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `type` TEXT NULL DEFAULT NULL,
-  `statuses` BIT(1) NULL DEFAULT NULL,
-  `workprocess` TEXT NULL DEFAULT NULL,
-  `classID` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `class_issue_setting_class_id_fk` (`classID` ASC) VISIBLE,
-  CONSTRAINT `class_issue_setting_class_id_fk`
-    FOREIGN KEY (`classID`)
-    REFERENCES `spp_database`.`class` (`id`))
-ENGINE = InnoDB
 AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -133,23 +96,43 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `spp_database`.`class_user`
+-- Table `spp_database`.`assignment_grade`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `spp_database`.`class_user` (
+CREATE TABLE IF NOT EXISTS `spp_database`.`assignment_grade` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `class_id` INT NULL DEFAULT NULL,
-  `user_id` INT NULL DEFAULT NULL,
+  `assignment_id` INT NULL DEFAULT NULL,
+  `grade` INT NULL DEFAULT NULL,
+  `userID` INT NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `class_user_class_id_fk` (`class_id` ASC) VISIBLE,
-  INDEX `class_user_user_user_id_fk` (`user_id` ASC) VISIBLE,
-  CONSTRAINT `class_user_class_id_fk`
-    FOREIGN KEY (`class_id`)
-    REFERENCES `spp_database`.`class` (`id`),
-  CONSTRAINT `class_user_user_user_id_fk`
-    FOREIGN KEY (`user_id`)
+  INDEX `assignment_grade_assignment_id_fk` (`assignment_id` ASC) VISIBLE,
+  INDEX `assignment_grade_user_user_id_fk` (`userID` ASC) VISIBLE,
+  CONSTRAINT `assignment_grade_assignment_id_fk`
+    FOREIGN KEY (`assignment_id`)
+    REFERENCES `spp_database`.`assignment` (`id`),
+  CONSTRAINT `assignment_grade_user_user_id_fk`
+    FOREIGN KEY (`userID`)
     REFERENCES `spp_database`.`user` (`user_id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 8
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `spp_database`.`class_issue_setting`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `spp_database`.`class_issue_setting` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `type` TEXT NULL DEFAULT NULL,
+  `statuses` BIT(1) NULL DEFAULT NULL,
+  `workprocess` TEXT NULL DEFAULT NULL,
+  `classID` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `class_issue_setting_class_id_fk` (`classID` ASC) VISIBLE,
+  CONSTRAINT `class_issue_setting_class_id_fk`
+    FOREIGN KEY (`classID`)
+    REFERENCES `spp_database`.`class` (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -160,14 +143,37 @@ COLLATE = utf8mb4_0900_ai_ci;
 CREATE TABLE IF NOT EXISTS `spp_database`.`group` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` TEXT NULL DEFAULT NULL,
-  `class_user_id` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `spp_database`.`class_user`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `spp_database`.`class_user` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `class_id` INT NULL DEFAULT NULL,
+  `user_id` INT NULL DEFAULT NULL,
+  `group` INT NULL DEFAULT NULL,
   `isLeader` BIT(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `group_class_user_id_fk` (`class_user_id` ASC) VISIBLE,
-  CONSTRAINT `group_class_user_id_fk`
-    FOREIGN KEY (`class_user_id`)
-    REFERENCES `spp_database`.`class_user` (`id`))
+  INDEX `class_user_class_id_fk` (`class_id` ASC) VISIBLE,
+  INDEX `class_user_user_user_id_fk` (`user_id` ASC) VISIBLE,
+  INDEX `class_user___fk` (`group` ASC) VISIBLE,
+  CONSTRAINT `class_user___fk`
+    FOREIGN KEY (`group`)
+    REFERENCES `spp_database`.`group` (`id`),
+  CONSTRAINT `class_user_class_id_fk`
+    FOREIGN KEY (`class_id`)
+    REFERENCES `spp_database`.`class` (`id`),
+  CONSTRAINT `class_user_user_user_id_fk`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `spp_database`.`user` (`user_id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 12
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -209,6 +215,7 @@ CREATE TABLE IF NOT EXISTS `spp_database`.`project` (
     FOREIGN KEY (`mentorID`)
     REFERENCES `spp_database`.`user` (`user_id`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 3
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -245,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `spp_database`.`subjectsetting` (
     FOREIGN KEY (`subjectID`)
     REFERENCES `spp_database`.`subject` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 2
+AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
