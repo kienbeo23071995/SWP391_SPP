@@ -48,7 +48,7 @@ CREATE TABLE IF NOT EXISTS `spp_database`.`class` (
     FOREIGN KEY (`subjectID`)
     REFERENCES `spp_database`.`subject` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 12
+AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -132,7 +132,7 @@ CREATE TABLE IF NOT EXISTS `spp_database`.`class_issue_setting` (
     FOREIGN KEY (`classID`)
     REFERENCES `spp_database`.`class` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -198,7 +198,7 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `spp_database`.`project` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `code` INT NULL DEFAULT NULL,
+  `code` TEXT NULL DEFAULT NULL,
   `eng_name` TEXT NULL DEFAULT NULL,
   `vietnamese_name` TEXT NULL DEFAULT NULL,
   `status` BIT(1) NULL DEFAULT NULL,
@@ -252,7 +252,7 @@ CREATE TABLE IF NOT EXISTS `spp_database`.`subjectsetting` (
     FOREIGN KEY (`subjectID`)
     REFERENCES `spp_database`.`subject` (`id`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 9
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
