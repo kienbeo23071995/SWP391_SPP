@@ -167,7 +167,6 @@
                                     </div>
                                     <div class="col-auto">
                                         <button type="submit" class="btn btn-primary mb-2"><i class="fa fa-search"></i></button>
-                                        <button type="reset" class="btn btn-primary mb-2"><i class="fa fa-refresh"></i></button>
                                     </div>
                                 </div>
                             </form>
