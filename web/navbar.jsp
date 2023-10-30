@@ -29,10 +29,6 @@
                             <li><a href="/G4_Project_SWP391/UserList"><i class="fa fa-circle-o"></i> Users List</a></li>
                             <li><a href="/G4_Project_SWP391/settings"><i class="fa fa-circle-o"></i> Settings List</a></li>
                             <li><a href="/G4_Project_SWP391/subjectList"><i class="fa fa-circle-o"></i> Subjects List</a></li>
-<<<<<<< HEAD
-=======
-
->>>>>>> 7d72e4b02f36f589bad0fb3716c5f72f2657e622
                         </ul>
                     </li>
                     <li>
@@ -59,12 +55,9 @@
                         <ul class="treeview-menu">
                             <li><a href="${pageContext.request.contextPath}/projectList"><i class="fa fa-circle-o"></i> Project List</a></li>
                         </ul>
-<<<<<<< HEAD
                         <ul class="treeview-menu">
                             <li><a href="${pageContext.request.contextPath}/projectmember"><i class="fa fa-circle-o"></i> Project Member</a></li>
                         </ul>
-=======
->>>>>>> 7d72e4b02f36f589bad0fb3716c5f72f2657e622
                     </li>
                 </ul>
             </section>

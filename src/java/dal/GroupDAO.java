@@ -131,8 +131,8 @@ public class GroupDAO extends BaseDAO {
             for (String item : ids) {
                 Connection connection = getJDBCConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);
-                ps.setInt(2, groupID);
-                ps.setInt(1, Integer.parseInt(item));
+                ps.setInt(1, groupID);
+                ps.setInt(2, Integer.parseInt(item));
                 ps.executeUpdate();
             }
         } catch (SQLException e) {

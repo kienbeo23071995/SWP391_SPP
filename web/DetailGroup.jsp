@@ -151,7 +151,7 @@
                                     <div class="tab-pane fade third show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-contact-tab">
                                         <div class="order">
                                             <div>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClassSetting"><span class="status process">Add New Class Issue Setting</span></button>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addClassSetting"><span class="status process">Add Student To Group</span></button>
                                             </div>
                                             <table class="table table-hover" style="margin: 0 auto; width: 90%;">
                                                 <thead>
@@ -170,7 +170,7 @@
                                                             <td>${u.user.getFullname()}</td>
                                                             <td>${u.cls.code}</td>
                                                             <td style="width: 10%;text-align: center">
-                                                                ${u.status eq true ? '<span style="color: green;">YES</span>' : '<span style="color: red;">NO</span>'}
+                                                                ${u.isLeader eq true ? '<span style="color: green;">YES</span>' : '<span style="color: red;">NO</span>'}
                                                             </td>
                                                             <td style="width: 25%;text-align: center">
                                                                 <a data-toggle="modal" data-target="#assUpdate${u.user.getUser_id()}" href="#">
@@ -178,7 +178,7 @@
                                                                         <i class="fa-solid fa-pen-to-square"></i>
                                                                     </span>
                                                                 </a>
-                                                                <a data-toggle="modal" data-target="#delete${u.id}" href="#">
+                                                                <a data-toggle="modal" data-target="#delete${u.user.getUser_id()}" href="#">
                                                                     <span style="font-size: 18px;" class="status pending">
                                                                         <i class="fa-solid fa-trash-can"></i>
                                                                     </span>
@@ -219,7 +219,7 @@
                                                                         <input type="hidden" name="oldgroup" value="${group.id}">
                                                                         <div class="form-group">
                                                                             <label for="recipient-code" class="col-form-label">Group</label>
-                                                                            <select name="newgroup" class="form-control" required="">
+                                                                            <select name="newgroup" class="form-control" required="" style="height: 50px">
                                                                                 <c:forEach items="${requestScope.groups}" var="item">
                                                                                     <option value="${item.id}" ${item.id == group.id ? 'disabled' : ''}>${item.name}</option>
                                                                                 </c:forEach>
