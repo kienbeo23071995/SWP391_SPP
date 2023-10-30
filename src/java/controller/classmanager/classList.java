@@ -7,6 +7,7 @@ package controller.classmanager;
 import dal.ClassDAO;
 import dal.SubjectDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +18,8 @@ import model.Class;
 import model.Subject;
 import ulti.Helper;
 
+import ulti.RestAPI;
+import static ulti.RestAPI.getJsonArray;
 /**
  *
  * @

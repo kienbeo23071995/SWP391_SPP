@@ -766,6 +766,7 @@ public class UserDAO extends BaseDAO {
         } catch (SQLException e) {
         }
     }
+
     
     public List<UserDTO> getAllUserByGroup(int groupID) {
         List<UserDTO> list = new ArrayList<>();
@@ -823,4 +824,5 @@ public class UserDAO extends BaseDAO {
         }
         return list;
     }
+
 }

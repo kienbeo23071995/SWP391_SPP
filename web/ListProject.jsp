@@ -208,6 +208,14 @@
                                                     <i class="fa-solid fa-pen-to-square"></i>
                                                 </span>
                                             </a>
+<<<<<<< HEAD
+=======
+                                            <a data-toggle="modal" data-target="#detail${u.id}" href="#">
+                                                <span style="font-size: 18px;" class="status process">
+                                                    <i class="fa-solid fa-eye"></i>
+                                                </span>
+                                            </a>
+>>>>>>> 7d72e4b02f36f589bad0fb3716c5f72f2657e622
                                             <c:if test="${u.status eq false}">
                                                 <a data-toggle="modal" data-target="#delete${u.id}" href="#">
                                                     <span style="font-size: 18px;" class="status pending">

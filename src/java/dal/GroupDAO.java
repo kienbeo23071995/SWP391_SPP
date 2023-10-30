@@ -35,8 +35,8 @@ public class GroupDAO extends BaseDAO {
             Connection connection = getJDBCConnection();
             PreparedStatement st = connection.prepareStatement(sql);
             if (search != null && !search.trim().isEmpty()) {
-                st.setString(1, "%" + search + "%");
-            }
+                 st.setString(1, "%" + search + "%");
+            }       
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
                 Group group = new Group();
